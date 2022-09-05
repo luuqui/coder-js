@@ -1,40 +1,56 @@
-let montoDeterminado = 50000
-let interes = 20
-let cantidadCuotas = parseInt(prompt("Ingrese la cantidad de cuotas que desea pagar: 3 - 6 - 9 - 12"))
-let total
-let otraCuota = true
-let decision
+let productoSeleccionado = parseInt(prompt("Ingrese el producto que desea comprar: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"))
+let seguir = true
+let totalCompra = 0
+let decision 
+let carrito = []
+let productos = []
 
-
-function calcularIntereses (montoDeterminado){
-    const calculoIntereses = montoDeterminado / 100 * interes
-    const totalDeIntereses = montoDeterminado + calculoIntereses
-    return totalDeIntereses
+const amdRyzen3 = {
+    nombre: "AMD RYZEN 3",
+    precio: 3000,
 }
+productos.push(amdRyzen3)
+const amdRyzen5 = {
+    nombre: "AMD RYZEN 5",
+    precio: 5000
+}
+productos.push(amdRyzen5)
+const amdRyzen7 = {
+    nombre: "AMD RYZEN 7",
+    precio: 9000
+}
+productos.push(amdRyzen7)
+const amdRyzen9 = {
+    nombre: "AMD RYZEN 9",
+    precio: 15000
+}
+productos.push(amdRyzen9)
 
-while (otraCuota === true){
-    
-    if (cantidadCuotas === 3){
-        total = calcularIntereses(montoDeterminado) / 3 
-    } else if (cantidadCuotas === 6) {
-        total = calcularIntereses(montoDeterminado) / 6 
-    } else if (cantidadCuotas === 9) {
-        total = calcularIntereses(montoDeterminado) / 9 
-    } else if (cantidadCuotas === 12) {
-        total = calcularIntereses(montoDeterminado) / 12
-    } else {
-        cantidadCuotas = parseInt(prompt("Ingrese una cantidad de cuotas correcta: 3 - 6 - 9 - 12"))
+while (seguir===true){
+    if (productoSeleccionado === 1){
+        carrito.push(productos[0])
+    } else if (productoSeleccionado === 2){
+        carrito.push(productos[1])
+    } else if (productoSeleccionado === 3){
+        carrito.push(productos[2])
+    } else if (productoSeleccionado === 4){
+        carrito.push(productos[3])
+    } else{
+        productoSeleccionado = parseInt(prompt("Ingrese un producto correcto: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"));
         continue
     }
     
-    alert ("El total a pagar es de: " + total)
-    
-    decision = parseInt(prompt("Deseas ver otra cuota? 1.Si - 2.No"))
+    decision = parseInt(prompt("Deseas seguir comprando? 1.SI - 2.NO"))
     if (decision === 1){
-        cantidadCuotas = parseInt(prompt("Ingrese la cantidad de cuotas que desea pagar: 3 - 6 - 9 - 12"))
-    } else if (decision === 2){
-        otraCuota = false
+        productoSeleccionado = parseInt(prompt("Ingrese un producto correcto: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"));
+    } else if(decision === 2){
+        seguir = false
     }
-
-    
 }
+
+
+for (const elemento of carrito) {
+    totalCompra = totalCompra + elemento.precio;
+}
+
+    alert ("El valor total es de: " + totalCompra)
