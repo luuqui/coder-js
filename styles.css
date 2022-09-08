@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+ul{
+    border-radius: 15px;
+    list-style: none;
+    text-align: center;
+    background-color: rgb(69, 69, 240);
+}
+
+li{
+    width: 200px;
+    margin: 5px;
+    padding: 10px;
+    background-color: rgb(135, 135, 250);
+    border-radius: 12px;
+    font-weight: bold;
+}

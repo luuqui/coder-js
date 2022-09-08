@@ -1,12 +1,6 @@
-let elegirProducto = parseInt(
-    prompt(
-        "Ingrese el producto que desea comprar: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"
-    )
-);
-let seguir = true;
-let totalCompra = 0;
 let productos = [];
-let decision;
+let lista = document.getElementById("lista")
+
 const iva = 1.21;
 class producto {
     constructor(id, nombre, precio) {
@@ -16,7 +10,7 @@ class producto {
     }
 
     sumaImpuestos () {
-        this.precio = this.precio * iva
+        this.precio = Math.ceil(this.precio * iva)
     }
 }
 
@@ -34,31 +28,9 @@ productos2.sumaImpuestos ();
 productos3.sumaImpuestos ();
 productos4.sumaImpuestos ();
 
-while (seguir === true) {
-    let productoSeleccionado = productos.find(
-        (prod) => prod.id === elegirProducto
-    );
-    if (productoSeleccionado) {
-        totalCompra = totalCompra + productoSeleccionado.precio;
-    } else {
-        elegirProducto = parseInt(
-            prompt(
-                "Ingrese un producto correcto: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"
-            )
-        );
-        continue;
-    }
-
-    decision = parseInt(prompt("Deseas seguir comprando? 1.Si - 2.No"));
-    if (decision === 1) {
-        elegirProducto = parseInt(
-            prompt(
-                "Ingrese el producto que desea comprar: 1.AMD RYZEN 3 - 2.AMD RYZEN 5 - 3.AMD RYZEN 7 - 4.AMD RYZEN 9"
-            )
-        );
-    } else if (decision === 2) {
-        seguir = false;
-    }
+productos.forEach(elemento=>{
+    let list = document.createElement ("li")
+    list.innerText = `${elemento.nombre}: $${elemento.precio}`
+    lista.append(list)
 }
-
-alert("El total a pagar es de: " + totalCompra);
+)
