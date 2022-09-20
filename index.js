@@ -1,81 +1,82 @@
-let productos = [];
+const contenedorCard = document.getElementById("containerCard")
+const contadorCarrito = document.getElementById("counterCard")
+const contenedorCarrito = document.getElementById('carrito-contenedor')
+const precioTotal = document.getElementById("precioTotal")
+
 let carrito = []
-const iva = 1.21;
-class producto {
-    constructor(id, nombre, precio,img) {
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.img = img
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        actualizarCarrito()
     }
-
-    sumaImpuestos () {
-        this.precio = Math.ceil(this.precio * iva)
-    }
-
-    desplegarProductos (){
-        const card = 
-            `<div id="card">
-            <div class="container__img">
-                <img src="${this.img}" alt="">
-            </div>
-            <p class="nombre-p">${this.nombre}</p>
-            <div class="container__precio">
-                <p class="precio">$${this.precio}</p>
-            </div>
-            <div class="container__button">
-                <button id= ${this.id}>
-                    Comprar
-                </button>
-            </div>`
-            const container = document.getElementById("container__card")
-            container.innerHTML += card
-    }
-
-    evento(){
-        const boton = document.getElementById(this.id)
-        const productoDetectado = productos.find (product => product.id == this.id)
-        boton.addEventListener('click', () => carritoAgregar(productoDetectado))
-    }
-    
-}
-
-let productos1 = new producto(1, "Amd Ryzen 3", 24500, "img/ryzen 3.jpg");
-let productos2 = new producto(2, "Amd Ryzen 5", 45900, "img/ryzen 5.jpg");
-let productos3 = new producto(3, "Amd Ryzen 7", 82950, "img/ryzen 7.jpg");
-let productos4 = new producto(4, "Amd Ryzen 9", 127500, "img/ryzen 9.jpg");
-productos.push(productos1,productos2, productos3, productos4);
-
-productos1.sumaImpuestos ();
-productos2.sumaImpuestos ();
-productos3.sumaImpuestos ();
-productos4.sumaImpuestos ();
-
-productos.forEach(elemento => {
-    elemento.desplegarProductos()
 })
 
-productos.forEach (e=>{
-    e.evento()
+productos.forEach((producto) => {
+    const div = document.createElement('div')
+    div.innerHTML =
+        `<div class="card" style="width: 18rem;">
+    <img src= ${producto.img} class="img card-img-top" alt="...">
+    <div class="card-body">
+        <h5 class="card-title">${producto.nombre}</h5>
+        <p class="card-text">$${producto.precio}</p>
+        <button id=${producto.id} class="btn btn-primary">Agregar al carrito</button>
+    </div>
+</div>`
+
+    contenedorCard.appendChild(div)
+
+    let boton = document.getElementById(producto.id)
+    boton.addEventListener('click', () => {
+        agregarAlCarrito(producto.id)
+    })
+
 })
 
-function carritoAgregar (producto) {
-    
-    const agregadoAlCarrito = carrito.find (prod => prod.id == producto.id)
+const agregarAlCarrito = (prodId) => {
 
-    if (!agregadoAlCarrito){
-        carrito.push({...producto, cantidad: 1})
+    const existe = carrito.some (prod => prod.id === prodId)
+    if(existe){
+        const prod = carrito.map (prod => {
+            if (prod.id === prodId){
+                prod.cantidad++
+            }
+        })
     } else {
-        const carritoFiltrado = carrito.filter (prod => prod.id != producto.id)
-        carrito = [
-            ...carritoFiltrado,
-            {...agregadoAlCarrito, cantidad: agregadoAlCarrito.cantidad + 1}
-        ]
+        const item = productos.find((prod) => prod.id === prodId)
+        carrito.push(item)
     }
-
-    contador.innerHTML = (carrito.reduce((acc, prod) => acc + prod.cantidad, 0))
-
+    actualizarCarrito()
 }
 
-const contador = document.getElementById('cartCounter')
-contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
+const eliminarDelCarrito = (prodId) => {
+    const item = carrito.find((producto) => producto.id === prodId)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    actualizarCarrito()
+}
+
+const actualizarCarrito = () => {
+    contenedorCarrito.innerHTML = ""
+
+    carrito.forEach((producto) => {
+        const div = document.createElement('div')
+        div.classList.add('producto')
+        div.innerHTML = `
+        <p>Producto: ${producto.nombre}</p>
+        <p>Precio: $${producto.precio}</p>
+        <p>Cantidad: ${producto.cantidad}</p>
+        <button onclick = "eliminarDelCarrito(${producto.id})" class="boton-eliminar"><i class="icon fas fa-trash-alt"></i></button>
+        `
+        contenedorCarrito.appendChild (div)
+        
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+    })
+
+    contadorCarrito.innerText = carrito.length
+    precioTotal.innerText = carrito.reduce ((acc, prod) => acc + prod.precio, 0)
+}
+
+
+
+

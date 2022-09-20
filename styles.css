@@ -7,7 +7,6 @@
 
 header{
     background-color: rgb(104, 104, 253);
-    width: 100%;
     height: 12vh;
     display: flex;
     align-items: center;
@@ -18,82 +17,59 @@ header h2{
     margin-left: 20px;
 }
 
-#container__card{
-    width: 100%;
-    height: 88vh;
-    background-color: rgb(194, 194, 193);
+.boton-right{
+    margin-right: 15px;
+}
+
+.icon-cart{
+    font-size: 1.5em;
+}
+
+.counter{
+    font-size: 1.5em;
+}
+
+.card{
+    height: 370px;
+}
+
+.container__card{
+    background-color: rgb(101, 101, 238);
+    padding: 10px;
+    margin: 20px;
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
-    padding-top: 40px;
-    gap: 5px;
-}
-
-#card{
-    height: 400px;
-    width: 280px;
-    background-color: rgb(135, 135, 250);
     border-radius: 10px;
-    overflow: hidden;
-
 }
 
-.container__img{
-    height: 70%;
+.img{
+    height: 55%;
+    object-fit: contain;
 }
 
-.container__img img{
-    object-fit: cover;
+.producto{
+    background-color: rgb(126, 165, 255);
+    display: flex;
+    justify-content: space-around;
     border-radius: 20px;
-    padding: 10px;
-    width: 100%;
-    height: 100%;
+    margin: 10px;
+    padding-top: 15px;
 }
 
-.nombre-p{
-    font-size: 1.5em;
-    text-align: center;
+.producto p{
+    color: white;
 }
 
-.container__precio{
-    padding: 10px;
-    font-size: 1.3em;
-    text-align: center;
-}
-
-.container__button{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-button{
-    background-color: brown;
-    width: 80%;
-    padding: 10px;
-    border-radius: 30px;
+.boton-eliminar{
     border: none;
+    background-color: rgb(126, 165, 255);
+    padding-bottom: 15px;
 }
 
-button:hover{
-    background-color: aliceblue;
-    transition: 0.8s;
-}
-
-a{
-    display: flex;
-    text-decoration: none;
-    align-items: center;
-    color: black;
-    font-weight: bold;
-}
-
-span{
-    background-color: rgb(193, 190, 190);
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    padding: 10px 15px;
-    background-color: rgb(197, 192, 192);
-    margin-right: 10px;
+.precioT{
+    display: inline-block;
+    background-color: rgb(126, 165, 255);
+    margin-left: 13px;
+    padding: 5px 10px;
+    border-radius: 10px;
 }

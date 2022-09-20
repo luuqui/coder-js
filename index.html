@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/7cd54c9d60.js" crossorigin="anonymous"></script>
 </head>
-<header>
-    <h2>Procesadores</h2>
-    <a href="">
-    <img src="shopping_cart_FILL0_wght400_GRAD0_opsz48.svg" alt="">
-    <span id="cartCounter"></span>
-    </a>
-</header>
+
 <body>
-    <div id="container__card">
-    
+    <header>
+        <h2>Procesadores</h2>
+        <button type="button" class="boton-right btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="icon-cart fa-solid fa-cart-shopping"></i>
+            <span id="counterCard" class="counter">0</span>
+        </button>
+    </header>
+
+    <div id="containerCard" class="container__card">
+
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="carrito__contenedor" id="carrito-contenedor"> </div>
+                    <p class="precioT">Precio total: $<span id="precioTotal">0</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="productos.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>
