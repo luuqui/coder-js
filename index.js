@@ -12,15 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
+//aplicando desestructuración anidada :
+let [{id,nombre,precio,img}] = productos
+
+//mostrar cards
 productos.forEach((producto) => {
     const div = document.createElement('div')
     div.innerHTML =
         `<div class="card" style="width: 18rem;">
-    <img src= ${producto.img} class="img card-img-top" alt="...">
+    <img src= ${img} class="img card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">${producto.nombre}</h5>
-        <p class="card-text">$${producto.precio}</p>
-        <button id=${producto.id} class="btn btn-primary">Agregar al carrito</button>
+        <h5 class="card-title">${nombre}</h5>
+        <p class="card-text">$${precio}</p>
+        <button id=${id} class="btn btn-primary">Agregar al carrito</button>
     </div>
 </div>`
 
@@ -39,6 +43,7 @@ const agregarAlCarrito = (prodId) => {
     if(existe){
         const prod = carrito.map (prod => {
             if (prod.id === prodId){
+                //aplico operador de incremento
                 prod.cantidad++
             }
         })
@@ -74,7 +79,7 @@ const actualizarCarrito = () => {
     })
 
     contadorCarrito.innerText = carrito.length
-    precioTotal.innerText = carrito.reduce ((acc, prod) => acc + prod.precio, 0)
+    precioTotal.innerText = carrito.reduce ((acc, prod) => acc + prod.precio*prod.cantidad, 0)
 }
 
 
