@@ -12,19 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 
-//aplicando desestructuración anidada :
-let [{id,nombre,precio,img}] = productos
-
 //mostrar cards
 productos.forEach((producto) => {
     const div = document.createElement('div')
     div.innerHTML =
         `<div class="card" style="width: 18rem;">
-    <img src= ${img} class="img card-img-top" alt="...">
+    <img src= ${producto.img} class="img card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">${nombre}</h5>
-        <p class="card-text">$${precio}</p>
-        <button id=${id} class="btn btn-primary">Agregar al carrito</button>
+        <h5 class="card-title">${producto.nombre}</h5>
+        <p class="card-text">$${producto.precio}</p>
+        <button id=${producto.id} class="btn btn-primary">Agregar al carrito</button>
     </div>
 </div>`
 
@@ -32,10 +29,40 @@ productos.forEach((producto) => {
 
     let boton = document.getElementById(producto.id)
     boton.addEventListener('click', () => {
+        toastJs()
         agregarAlCarrito(producto.id)
     })
 
 })
+
+//funciones toastify´s
+
+function toastJs (){
+    Toastify({
+        text: "Agregado al carrito",
+        duration: 3000,
+        gravity: "bottom",
+        style: {
+            background: "#373b44",
+            background: "-webkit-linear-gradient(to right, #373b44, #4286f4)",
+            background: "linear-gradient(to right, #373b44, #4286f4)"
+        }
+    }).showToast()
+}
+
+function toastJsEliminar (){
+    Toastify({
+        text: "Eliminado del carrito",
+        duration: 3000,
+        gravity: "bottom",
+        style: {
+            background: "#373b44",
+            background: "-webkit-linear-gradient(to right, #373b44, #4286f4)",
+            background: "linear-gradient(to right, #373b44, #4286f4)"
+        }
+    }).showToast()
+}
+
 
 const agregarAlCarrito = (prodId) => {
 
@@ -52,12 +79,14 @@ const agregarAlCarrito = (prodId) => {
         carrito.push(item)
     }
     actualizarCarrito()
+    
 }
 
 const eliminarDelCarrito = (prodId) => {
     const item = carrito.find((producto) => producto.id === prodId)
     const indice = carrito.indexOf(item)
     carrito.splice(indice, 1)
+    toastJsEliminar ()
     actualizarCarrito()
 }
 
