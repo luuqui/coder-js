@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "nombre": "Ryzen 3",
+        "precio": 2000,
+        "img": "https://ae01.alicdn.com/kf/H48dabb65de9c4f3ca173d66b30494624i/Procesador-de-CPU-AMD-Ryzen-3-PRO-4350G-R3-PRO-4350G-3-8-GHz-cuatro-n.jpg"
+    },
+
+    {
+        "id": 2,
+        "nombre": "Ryzen 5",
+        "precio": 4000,
+        "img": "https://s3-sa-east-1.amazonaws.com/saasargentina/8Z6EZT5mW0Ti35yhnOXR/imagen"
+    },
+    {
+        "id": 3,
+        "nombre": "Teclado Gamer",
+        "precio": 6000,
+        "img": "https://pccom.cl/wp-content/uploads/2020/10/Fantech-Fighter-TKL-II.png"
+    },
+    {
+        "id": 4,
+        "nombre": "Placa de Video",
+        "precio": 8000,
+        "img": "https://mexx-img-2019.s3.amazonaws.com/placa-video-AMD-Radeon-OC_39803_1.jpeg"
+    },
+
+    {
+        "id": 5,
+        "nombre": "Auriculares Gamer",
+        "precio": 10000,
+        "img": "https://images.fravega.com/f500/57e1403fe178abd9607293ff67e58704.jpg"
+    },
+
+    {
+        "id": 6,
+        "nombre": "Intel 9",
+        "precio": 12000,
+        "img": "https://app.contabilium.com/files/explorer/7026/Productos-Servicios/concepto-3861046.jpg"
+    },
+
+    {
+        "id": 7,
+        "nombre": "Monitor Gamer",
+        "precio": 14000,
+        "img": "https://front.dev.malditohard.com.ar/img/migration/MONITOR-GAMER-GIGABYTE-27-G27QCSA.webp"
+    },
+
+    {
+        "id": 8,
+        "nombre": "Mouse Gamer",
+        "precio": 16000,
+        "img": "https://mexx-img-2019.s3.amazonaws.com/38348_1.jpeg"
+    }
+
+]
